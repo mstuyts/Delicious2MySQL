@@ -1,5 +1,5 @@
 # Delicious2MySQL
-A script to backup all your Delicious links to a MySQL database.
+A PHP script to backup all your Delicious.com links to a MySQL database.
 
 To install this script:
 * Copy all files from this repository to your webserver.
