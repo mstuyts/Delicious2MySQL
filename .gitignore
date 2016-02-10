@@ -1,0 +1,5 @@
+# The local settings file
+/includes/settings.php
+
+# Temporary local folder
+/temp/
