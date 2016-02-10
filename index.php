@@ -24,7 +24,6 @@ include_once($settingsfile);
 	<body>
 		<div id="wrapper">
 			<h1>Delicious2MySQL</h1>
-
 			<?php
 				// Connect to database
 				error_reporting(0);
