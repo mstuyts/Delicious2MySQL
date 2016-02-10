@@ -1,0 +1,32 @@
+html, body{
+	font-family: tahoma, arial, sans-serif, sans;
+	background-color: #f2f2f2;
+}
+h1{
+	font-size: 220%;
+}
+input[type=text], .monospace{
+	font-family: monospace;
+}
+input[type=submit], input[type=button]{
+	font-size: 180%;
+}
+#submitbutton{
+	margin-top: 4em;
+}
+.inputtext{
+	display: inline-block;
+	width: 12em;
+}
+#wrapper{
+	width: 70%;
+	margin: 2% auto;
+	background-color: white;
+	padding: 2%;
+	border: solid black 2px;
+}
+
+#intro{
+	font-style:oblique;
+	font-size: 120%;
+}
