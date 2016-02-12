@@ -47,7 +47,7 @@ include_once($settingsfile);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				$checkarray = json_decode(json_encode(simplexml_load_string(curl_exec($ch))),TRUE);
 				curl_close($ch);
-				if($checkarray['@attributes']['code']=="access denied"){
+				if($checkarray['@attributes']['user']!=$deluser){
 					echo('<h2>Connection to Delicious.com failed.</h2>');
 				}
 				else{
