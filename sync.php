@@ -23,7 +23,7 @@ include_once($settingsfile);
 	</head>
 	<body>
 		<div id="wrapper">
-			<h1>Delicious2MySQL - Sync links</h1>
+			<h1>Sync links with Delicious2MySQL</h1>
 			<p id="intro">This page backups the last 100000 links of user '<?php echo($deluser);?>' on Delicious.com to MySQL.</p>
 			<?php
 				// Connect to database
@@ -77,5 +77,8 @@ include_once($settingsfile);
 				}
 			?>
 		</div>
+        <?php
+            include_once("footer.php");
+        ?>
 	</body>
 </html>

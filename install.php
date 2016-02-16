@@ -10,8 +10,10 @@ if(file_exists($settingsfile)){
     die();
 }
 if(!file_exists($savesettingsfile)){
-	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">The file '.$savesettingsfile.' has been removed for security reasons. Put it back on your server to install this script.</p></div></body></html>');
-     die();
+	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">The file '.$savesettingsfile.' has been removed for security reasons. Put it back on your server to install this script.</p></div>');
+    include_once("footer.php");
+    echo('</body></html>');
+    die();
 }
 ?><!DOCTYPE html>
 	<html lang="en">
@@ -39,5 +41,8 @@ if(!file_exists($savesettingsfile)){
 				<p id="submitbutton"><input type="submit" value="Save settings"></p>
 			</form>
 		</div>
+        <?php
+            include_once("footer.php");
+        ?>
 	</body>
 </html>

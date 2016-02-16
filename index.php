@@ -17,8 +17,8 @@ include_once($settingsfile);
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="Delicious2MySQL: A script to backup all your Delicious links.">
-		<title>Delicious2MySQL - All links</title>
+		<meta name="description" content="A backup of all my Delicious links using Delicious2MySQL.">
+		<title>My favourite links</title>
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
@@ -65,5 +65,8 @@ include_once($settingsfile);
 				}
 			?>
 		</div>
+        <?php
+            include_once("footer.php");
+        ?>
 	</body>
 </html>

@@ -8,14 +8,18 @@ if(file_exists($settingsfile)){
 }
 // Check if everything is filled in
 if($_POST['dbhost']=="" || $_POST['db']=="" || $_POST['dbuser']=="" || $_POST['dbpassword']=="" || $_POST['tableprefix']=="" || $_POST['deluser']=="" || $_POST['delpassword']=="" ){
-	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Not all settings were filled in. Go back and correct your settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div></body></html>');
+	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Not all settings were filled in. Go back and correct your settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div>');
+    include_once("footer.php");
+    echo('</body></html>');
 	die();
 }
 // Check if MySQL settings are correct
 error_reporting(0);
 $mysqli = new mysqli($_POST['dbhost'], $_POST['dbuser'], $_POST['dbpassword'], $_POST['db']);
 if(mysqli_connect_errno()) {
-	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Connection to MySQL failed: ' . mysqli_connect_error().'. Please go back and correct your MySQL settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div></body></html>');
+	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Connection to MySQL failed: ' . mysqli_connect_error().'. Please go back and correct your MySQL settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div>');
+    include_once("footer.php");
+    echo('</body></html>');
 	die();
 }
 // Check if Delicious.com settings are correct
@@ -41,14 +45,18 @@ $droptablesql="DROP TABLE IF EXISTS ".$_POST['tableprefix']."links;";
 if ($mysqli->query($droptablesql) === TRUE) {
     // Table dropped successfully
 } else {
-    	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Unable to drop MySQL table: ' . mysqli_connect_error().'. Please go back and correct your MySQL settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div></body></html>');
+    	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Unable to drop MySQL table: ' . mysqli_connect_error().'. Please go back and correct your MySQL settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div>');
+    include_once("footer.php");
+    echo('</body></html>');
 	die();
 }
 $createtablesql="CREATE TABLE ".$_POST['tableprefix']."links ( url varchar(250) , description varchar(250) , notes text, tags text, hash varchar(50) , updated longtext);";
 if ($mysqli->query($createtablesql) === TRUE) {
     // Table created successfully
 } else {
-    	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Unable to create MySQL table: ' . mysqli_connect_error().'. Please go back and correct your MySQL settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div></body></html>');
+    	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Unable to create MySQL table: ' . mysqli_connect_error().'. Please go back and correct your MySQL settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div>');
+    include_once("footer.php");
+    echo('</body></html>');
 	die();
 }
 
