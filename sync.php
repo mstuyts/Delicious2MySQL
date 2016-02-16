@@ -29,6 +29,7 @@ include_once($settingsfile);
 				// Connect to database
 				error_reporting(0);
 				$mysqli = new mysqli($dbhost, $dbuser, $dbpassword, $db);
+                mysql_set_charset('utf8',$mysqli);
 				if(mysqli_connect_errno()) {
 					echo('<h2>Problem to connect to MySQL</h2><p>Connection to MySQL failed: ' . mysqli_connect_error().'. </p>');
 					die();
@@ -63,11 +64,10 @@ include_once($settingsfile);
 					$insertsql="INSERT INTO ".$linkstable." (url, description, notes, tags, hash, updated) VALUES ";
 					foreach($linksarray as $linkdataset){
 							$linkrecord=$linkdataset['@attributes'];
-							$insertsql.="('".$linkrecord['href']."', '".addslashes(htmlentities(utf8_decode($linkrecord['description'])))."', '".addslashes(htmlentities(utf8_decode($linkrecord['extended'])))."', '".addslashes(htmlentities(utf8_decode($linkrecord['tag'])))."', '".$linkrecord['hash']."', '".$linkrecord['time']."'),";
+							$insertsql.="('".$linkrecord['href']."', '".$mysqli->real_escape_string($linkrecord['description'])."', '".addslashes(htmlentities(utf8_decode($linkrecord['extended'])))."', '".addslashes(htmlentities(utf8_decode($linkrecord['tag'])))."', '".$linkrecord['hash']."', '".$linkrecord['time']."'),";
 					}
 					$insertsql=substr($insertsql,0,-1);
 					$insertsql.=";";
-					//echo($insertsql);
 					// Add all the links to MySQL
 					if ($mysqli->query($insertsql) === TRUE) {
 						echo("<p>All links were copied to your MySQL table. Go to the <a href='.'>frontpage</a> to see them.</p>");
