@@ -59,7 +59,10 @@ if ($mysqli->query($createtablesql) === TRUE) {
     echo('</body></html>');
 	die();
 }
-
+$createindexsql="ALTER TABLE ".$_POST['tableprefix']."links ADD INDEX (hash);";
+if ($mysqli->query($createindexsql) === TRUE) {
+    // Index created successfully
+}
 // Save settings file
 $settingsfile = fopen("includes/settings.php", "w") or die("Unable to open file!");
 $setting = '<?php
