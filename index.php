@@ -33,7 +33,7 @@ include_once($settingsfile);
 					die();
 				}
 				// Check if there are links in the database
-				$dblinks=$mysqli->query("SELECT * FROM ".$linkstable." ORDER BY updated DESC");
+				$dblinks=$mysqli->query("SELECT * FROM ".$linkstable." WHERE private='no' ORDER BY updated DESC");
 				$numberoflinks = $dblinks->num_rows;
 
 				if($numberoflinks==0){
@@ -41,9 +41,9 @@ include_once($settingsfile);
 				}
 				else{
 					if($numberoflinks>99999){
-						echo("<p id='intro'>This page shows the last $numberoflinks links of user '$deluser' on Delicious.com that are in the MySQL database.</p>");
+						echo("<p id='intro'>This page shows the last $numberoflinks public links of user '$deluser' on Delicious.com that are in the MySQL database.</p>");
 					}else{
-						echo("<p id='intro'>This page shows all $numberoflinks links of user '$deluser' on Delicious.com that are in the MySQL database.</p>");
+						echo("<p id='intro'>This page shows all $numberoflinks public links of user '$deluser' on Delicious.com that are in the MySQL database.</p>");
 					}
 					while ($row = mysqli_fetch_array($dblinks)) {
 						$url = $row["url"];
@@ -52,15 +52,15 @@ include_once($settingsfile);
 						$tags = $row["tags"];
 						$hash = $row["hash"];
 						$updated = $row["updated"];
-						echo("<p class='link'>");
-						echo("<a href='$url' target='_blank' alt='$hash'>$description</a> <span class='monospace'>($updated)</span>");
-						if($tags!=""){
-							echo(" - <strong>tags:</strong> <i>$tags</i>");
-						}
-						if($notes!=""){
-							echo(" - <strong>notes:</strong> <i>$notes</i>");
-						}
-						echo("</p>");
+                        echo("<p class='link'>");
+                        echo("<a href='$url' target='_blank' alt='$hash'>$description</a> <span class='monospace'>($updated)</span>");
+                        if($tags!=""){
+                            echo(" - <strong>tags:</strong> <i>$tags</i>");
+                        }
+                        if($notes!=""){
+                            echo(" - <strong>notes:</strong> <i>$notes</i>");
+                        }
+                        echo("</p>");
 					}
 				}
 			?>

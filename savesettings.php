@@ -50,7 +50,7 @@ if ($mysqli->query($droptablesql) === TRUE) {
     echo('</body></html>');
 	die();
 }
-$createtablesql="CREATE TABLE ".$_POST['tableprefix']."links ( url varchar(250) , description varchar(250) , notes text, tags text, hash varchar(50) , updated longtext);";
+$createtablesql="CREATE TABLE ".$_POST['tableprefix']."links ( url varchar(250) , description varchar(250) , notes text, tags text, private text, hash varchar(50) , updated longtext);";
 if ($mysqli->query($createtablesql) === TRUE) {
     // Table created successfully
 } else {

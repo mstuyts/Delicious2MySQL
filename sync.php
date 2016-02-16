@@ -61,10 +61,10 @@ include_once($settingsfile);
 					$countlinks=count($linksarray);
 					echo("<p>Number of links to be synced: $countlinks</p>");
 					// Create MySQL query
-					$insertsql="INSERT INTO ".$linkstable." (url, description, notes, tags, hash, updated) VALUES ";
+					$insertsql="INSERT INTO ".$linkstable." (url, description, notes, tags, private, hash, updated) VALUES ";
 					foreach($linksarray as $linkdataset){
 							$linkrecord=$linkdataset['@attributes'];
-							$insertsql.="('".$linkrecord['href']."', '".$mysqli->real_escape_string($linkrecord['description'])."', '".addslashes(htmlentities(utf8_decode($linkrecord['extended'])))."', '".addslashes(htmlentities(utf8_decode($linkrecord['tag'])))."', '".$linkrecord['hash']."', '".$linkrecord['time']."'),";
+							$insertsql.="('".$linkrecord['href']."', '".$mysqli->real_escape_string($linkrecord['description'])."', '".addslashes(htmlentities(utf8_decode($linkrecord['extended'])))."', '".addslashes(htmlentities(utf8_decode($linkrecord['tag'])))."', '".$linkrecord['private']."', '".$linkrecord['hash']."', '".$linkrecord['time']."'),";
 					}
 					$insertsql=substr($insertsql,0,-1);
 					$insertsql.=";";
