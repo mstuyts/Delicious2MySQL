@@ -23,7 +23,7 @@ include_once($settingsfile);
 	</head>
 	<body>
 		<div id="wrapper">
-			<h1>Delicious2MySQL</h1>
+			<h1>My favourite links</h1>
 			<?php
 				// Connect to database
 				error_reporting(0);
