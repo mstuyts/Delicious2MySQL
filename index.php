@@ -49,7 +49,7 @@ include_once($settingsfile);
 						$url = $row["url"];
 						$description = $row["description"];
 						$notes = $row["notes"];
-						$tags = $row["tags"];
+						$tags = str_replace(',',', ', $row["tags"]);
 						$hash = $row["hash"];
 						$updated = $row["updated"];
                         echo("<p class='link'>");
