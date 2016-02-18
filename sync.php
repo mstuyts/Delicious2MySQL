@@ -28,16 +28,17 @@ include_once($settingsfile);
 			<?php
 				// Connect to database
 				error_reporting(0);
-				$mysqli = new mysqli($dbhost, $dbuser, $dbpassword, $db);
+				$mysqli=new mysqli($dbhost, $dbuser, $dbpassword, $db);
 				if(mysqli_connect_errno()) {
 					echo('<h2>Problem to connect to MySQL</h2><p>Connection to MySQL failed: ' . mysqli_connect_error().'. </p>');
 					die();
 				}
 				// Check if Delicious.com settings are correct
-				$ch = curl_init();
+				$ch=curl_init();
 				$api="https://api.del.icio.us/v1/posts/all?&results=100000&tag_separator=comma";
 				$credentials = $deluser.':'.$delpassword;
 				$headers = array("POST ".$page." HTTP/1.0","Content-type: text/xml;charset=\"utf-8\"","Accept: text/xml", "Cache-Control: no-cache","Pragma: no-cache","SOAPAction: \"run\"","Authorization: Basic " . base64_encode($credentials));
+                $url="{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 				curl_setopt($ch, CURLOPT_URL, $api);
 				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -45,6 +46,7 @@ include_once($settingsfile);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+                curl_setopt($ch, CURLOPT_USERAGENT,'Delicious2MySQL on '.$url);
 				$checkarray = json_decode(json_encode(simplexml_load_string(curl_exec($ch))),TRUE);
 				curl_close($ch);
 				if($checkarray['@attributes']['user']!=$deluser){
