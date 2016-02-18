@@ -71,7 +71,7 @@ include_once($settingsfile);
 					$insertsql.=";";
 					// Add all the links to MySQL
 					if ($mysqli->query($insertsql) === TRUE) {
-						echo("<p>All links were copied to your MySQL table. Go to the <a href='.'>frontpage</a> to see them.</p>");
+						echo("<p>All links were copied to the MySQL table. Go to the <a href='.'>frontpage</a> to see them.</p>");
 					} else {
 						echo('<p>Unable to add data to MySQL table: ' . mysqli_connect_error().'. </p>');
 					}
