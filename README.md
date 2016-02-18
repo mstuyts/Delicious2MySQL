@@ -24,7 +24,8 @@ __*An easy PHP script to backup all your [delicious.com](https://delicious.com) 
 * If you want to keep your database up to date set up a cron job to wget http://yourdomain.com/links/sync.php or visit that page frequently.
 * Every time you sync your links and the server is able to get your links from [delicious.com](https://delicious.com), the script empties the MySQL table and fills it with your current links on [delicious.com](https://delicious.com).
 * **Important!** Please wait at least one second between synchronisations, or you are likely to get automatically throttled by [delicious.com](https://delicious.com). 
-* The [delicious.com](https://delicious.com) allows to sync your latest 100000 links. If you have more links than that, you will loose older links.
+* The [delicious.com](https://delicious.com) API allows to sync your latest 100000 links. If you have more links than that, older links are not saved to the MySQL database.
+* If you have many links or a slow webserver it can take sync.php a little longer to run.
 
 ## Demo
 * Frontpage: https://michelstuyts.be/links/
