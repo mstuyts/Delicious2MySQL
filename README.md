@@ -1,6 +1,11 @@
 # Delicious2MySQL
 __*An easy PHP script to backup all your [delicious.com](https://delicious.com) links to a MySQL database*__.
 
+## Requirements
+* An account at https://delicious.com (it's free) with links
+* A MySQL database
+* A webserver (shared hosting is just fine): PHP 5.2 or higher with cURL support on your webserver
+
 ## Installation
 * Download the latest release of Delicious2MySQL from https://github.com/mstuyts/Delicious2MySQL/releases/latest
 * Extract the archive file
@@ -14,11 +19,6 @@ __*An easy PHP script to backup all your [delicious.com](https://delicious.com) 
 
 ## See the synced links
 * Go to http://yourdomain.com/links/ to see your links.
-
-## Requirements
-* An account at https://delicious.com (it's free) with links
-* A MySQL database
-* A webserver (shared hosting is just fine): PHP 5.2 or higher with cURL support on your webserver
 
 ## Good to know
 * If you want to keep your database up to date set up a cron job to wget http://yourdomain.com/links/sync.php or visit that page frequently.
