@@ -29,7 +29,6 @@ include_once($settingsfile);
 				// Connect to database
 				error_reporting(0);
 				$mysqli = new mysqli($dbhost, $dbuser, $dbpassword, $db);
-                mysql_set_charset('utf8',$mysqli);
 				if(mysqli_connect_errno()) {
 					echo('<h2>Problem to connect to MySQL</h2><p>Connection to MySQL failed: ' . mysqli_connect_error().'. </p>');
 					die();
