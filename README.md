@@ -9,6 +9,7 @@ __*An easy PHP script to backup all your [delicious.com](https://delicious.com) 
 * An account at https://delicious.com (it's free) with links;
 * A MySQL database;
 * A webserver (shared hosting is just fine): PHP 5.2 or higher with cURL support on your webserver.
+* A working delicious.com API
 
 ## Installation
 * Download the latest release of Delicious2MySQL from https://github.com/mstuyts/Delicious2MySQL/releases/latest.
