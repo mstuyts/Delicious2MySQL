@@ -1,6 +1,9 @@
 # Delicious2MySQL
 __*An easy PHP script to backup all your [delicious.com](https://delicious.com) links to a MySQL database.*__
 
+| **delicious.com is trying to update their website and on the way they killed their API. This means this script will not work. Contact delicious.com to ask for more information about their API.** |
+|-----|
+
 ## Requirements
 * An account at https://delicious.com (it's free) with links;
 * A MySQL database;
