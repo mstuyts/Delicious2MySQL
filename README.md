@@ -2,7 +2,7 @@
 __*An easy PHP script to backup all your [delicious.com](https://delicious.com) links to a MySQL database.*__
 
 
-| **delicious.com is trying to update their website and on the way they killed their API. This means this script will not work. Contact delicious.com to ask for more information about their API.** |
+| **<h1> delicious.com updated their website and on the way they killed their API. This means this script will no longer work. Contact delicious.com to ask for more information about their API.</h1>** |
 |-----|
 
 ## Requirements
