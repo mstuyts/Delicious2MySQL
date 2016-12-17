@@ -76,7 +76,6 @@ $setting = '<?php
 
 	// Delicious.com settings
 	$deluser="'.$_POST['deluser'].'";
-	$delpassword="'.$_POST['delpassword'].'";
 
 // System settings
 // DON\'T CHANGE ANYTHING AFTER THIS
