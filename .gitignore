@@ -1,0 +1,8 @@
+# The local settings file 
+/includes/settings.php
+
+# a test file
+/testsync.php
+
+# Temporary local folder
+/temp/
