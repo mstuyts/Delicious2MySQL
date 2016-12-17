@@ -1,8 +1,11 @@
 # The local settings file 
 /includes/settings.php
 
+<<<<<<< HEAD
 # a test file
 /testsync.php
 
+=======
+>>>>>>> Delicious2MySQL/master
 # Temporary local folder
 /temp/
