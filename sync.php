@@ -35,13 +35,9 @@ include_once($settingsfile);
         }
         // Check if Delicious.com settings are correct
         $ch=curl_init();
-        //$api="https://api.del.icio.us/v1/posts/all?&results=100000&tag_separator=comma";
         $jsonurl="http://feeds.del.icio.us/v2/json/".$deluser."?count=100";
-        //$credentials = $deluser.':'.$delpassword;
-        //$headers = array("POST ".$page." HTTP/1.0","Content-type: text/xml;charset=\"utf-8\"","Accept: text/xml", "Cache-Control: no-cache","Pragma: no-cache","SOAPAction: \"run\"","Authorization: Basic " . base64_encode($credentials));
         $headers = array("POST ".$page." HTTP/1.0","Content-type: text/xml;charset=\"utf-8\"","Accept: text/xml", "Cache-Control: no-cache","Pragma: no-cache","SOAPAction: \"run\"");
         $url="{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-        #curl_setopt($ch, CURLOPT_URL, $api);
         curl_setopt($ch, CURLOPT_URL, $jsonurl);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -49,22 +45,13 @@ include_once($settingsfile);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS,$post);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                curl_setopt($ch, CURLOPT_USERAGENT,'Delicious2MySQL on '.$url);
-        //$checkarray = json_decode(json_encode(simplexml_load_string(curl_exec($ch))),TRUE);
+        curl_setopt($ch, CURLOPT_USERAGENT,'Delicious2MySQL on '.$url);
         $checkarray = json_decode(curl_exec($ch),TRUE);
         curl_close($ch);
-  //print_r($checkarray);
-
-
-        //if($checkarray['@attributes']['user']!=$deluser){
         if(!is_array($checkarray)){
           echo('<h2>Connection to Delicious.com failed.</h2>');
         }
         else{
-
-          // Empty the existing MySQL table
-          //$emptyquery="TRUNCATE ".$linkstable;
-          //$mysqli->query($emptyquery);
           // Get all existing links
           $selectquery="SELECT * FROM ".$linkstable;
           $dblinks=$mysqli->query($selectquery);
@@ -78,21 +65,15 @@ include_once($settingsfile);
                    $checkurl[$row["url"]] = $row["url"];
                 }
           }
-
-          // Get all links in an array
-          //$linksarray=$checkarray['post'];
+           
           // Count the number of links (max. 100000 due to API limits)
           $countlinks=count($checkarray);
           echo("<p>Number of links to be checked: $countlinks</p>");
           // Create MySQL query
-          //$insertsql="INSERT INTO ".$linkstable." (url, description, notes, tags, private, hash, updated) VALUES ";
           $insertsql="INSERT INTO ".$linkstable." (url, description, notes, tags, updated) VALUES ";
-          //foreach($linksarray as $linkdataset){
-              $countnewlinks=0;
+          $countnewlinks=0;
           foreach($checkarray as $linkrecord){
               if($checkurl[$linkrecord['u']]!=$linkrecord['u']){
-                  //$linkrecord=$linkdataset['@attributes'];
-                  //$insertsql.="('".$linkrecord['href']."', '".$mysqli->real_escape_string($linkrecord['description'])."', '".addslashes(htmlentities(utf8_decode($linkrecord['extended'])))."', '".addslashes(htmlentities(utf8_decode($linkrecord['tag'])))."', '".$linkrecord['private']."', '".$linkrecord['hash']."', '".$linkrecord['time']."'),";
                   $taglist="";
                   foreach($linkrecord['t'] as $tag){
                       $taglist.=$tag.",";
@@ -105,7 +86,7 @@ include_once($settingsfile);
           $insertsql=substr($insertsql,0,-1);
           $insertsql.=";";
             if($countnewlinks>0){
-              // Add all the links to MySQL
+              // Add the new links to MySQL
               if ($mysqli->query($insertsql) === TRUE) {
                 echo("<p>$countnewlinks link(s) were copied to the MySQL table. Go to the <a href='.'>frontpage</a> to see them.</p>");
               } else {
