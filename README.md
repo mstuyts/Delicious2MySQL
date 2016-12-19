@@ -2,8 +2,7 @@
 __*An easy PHP script to backup your [delicious.com](https://delicious.com) links to a MySQL database.*__
 
 
-| **<h2> delicious.com killed their API. This means this script has to use the JSON feed provided by delicious.com. This feed only shows the 100 most recent public links. If you open the link to sync.php frequent enough, you can backup all new links to MySQL. Links removed from your delicious.com account won't be deleted from your MySQL database.</h2>** |
-|-----|
+*delicious.com killed their API. This means this script has to use the JSON feed provided by delicious.com. This feed only shows the 100 most recent public links. If you open the link to sync.php frequent enough, you can backup all new links to MySQL. Links removed from your delicious.com account won't be deleted from your MySQL database.*
 
 ## Requirements
 * A username at https://delicious.com with links;
