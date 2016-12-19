@@ -88,7 +88,9 @@ include_once($settingsfile);
             if($countnewlinks>0){
               // Add the new links to MySQL
               if ($mysqli->query($insertsql) === TRUE) {
-                echo("<p>$countnewlinks link(s) were copied to the MySQL table. Go to the <a href='.'>frontpage</a> to see them.</p>");
+                if($countnewlinks==1){echo("<p>1 link was ");}
+                else{echo("<p>$countnewlinks links were ");}
+                echo("copied to the MySQL table. Go to the <a href='.'>frontpage</a> to see them.</p>");
               } else {
                 echo('<p>Unable to add data to MySQL table: ' . mysqli_connect_error().'. </p>');
               }
