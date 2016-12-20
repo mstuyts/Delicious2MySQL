@@ -17,7 +17,7 @@ include_once($settingsfile);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A backup of my Delicious links using Delicious2MySQL.">
+    <meta name="description" content="A backup of my del.icio.us links using Delicious2MySQL.">
     <title>My favourite links</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -37,7 +37,7 @@ include_once($settingsfile);
         $numberoflinks = $dblinks->num_rows;
 
         if($numberoflinks==0){
-          echo("<p id='intro'>There are no links in your database. You possibly didn't download them yet from Delicious.com. To do so <a href='sync.php'>click here</a>.</p>");
+          echo("<p id='intro'>There are no links in your database. You possibly didn't download them yet from Del.icio.us. To do so <a href='sync.php'>click here</a>.</p>");
         }
         else{
           if($numberoflinks>99999){
