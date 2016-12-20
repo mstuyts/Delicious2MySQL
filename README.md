@@ -2,7 +2,7 @@
 __*An easy PHP script to backup your [del.icio.us](https://del.icio.us) links to a MySQL database.*__
 
 
-*delicious.com killed their API. This means this script has to use the JSON feed provided by delicious.com. This feed only shows the 100 most recent public links. If you open the link to sync.php frequent enough, you can backup all new links to MySQL. Links removed from your del.icio.us account won't be deleted from your MySQL database.*
+*del.icio.us killed their API. This means this script has to use the JSON feed provided by del.icio.us. This feed only shows the 100 most recent public links. If you open the link to sync.php frequent enough, you can backup all new links to MySQL. Links removed from your del.icio.us account won't be deleted from your MySQL database.*
 
 ## Requirements
 * A username at https://del.icio.us with links;
