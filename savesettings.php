@@ -22,7 +22,7 @@ if(mysqli_connect_errno()) {
     echo('</body></html>');
 	die();
 }
-// Check if Delicious.com settings are correct
+// Check if del.icio.us settings are correct
 $ch = curl_init();
 $api="https://api.del.icio.us/v1/posts/all&results=1";
 $credentials = $_POST['deluser'].':'.$_POST['delpassword'];
@@ -37,7 +37,7 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $checkarray = json_decode(json_encode(simplexml_load_string(curl_exec($ch))),TRUE);
 curl_close($ch);
 if($checkarray['@attributes']['code']=="access denied"){
-	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Connection to Delicious.com failed. Please go back and correct your Delicious.com settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div></body></html>');
+	echo('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Problem to install the Delicious2MySQL script."><title>Problem to Install Delicious2MySQL</title><link rel="stylesheet" href="css/style.css"></head><body><div id="wrapper"><h1>Problem to Install Delicious2MySQL</h1><p id="intro">Connection to del.icio.us failed. Please go back and correct your del.icio.us settings.</p><p id="submitbutton"><input type="button" onclick="window.history.back();" value="Go Back"></p></div></body></html>');
 	die();
 }
 // Create MySQL tables
