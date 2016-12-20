@@ -36,7 +36,7 @@ if(!file_exists($savesettingsfile)){
 				<p><span class="inputtext">Database password:</span><input type="text" size="35" name="dbpassword" value=""></p>
 				<p><span class="inputtext">Database tables prefix:</span><input type="text" size="35" name="tableprefix" value="delicious_"></p>
 				<h2>Delicious.com settings</h2>
-				<p><span class="inputtext">Delicious.com username:</span><input type="text" size="35" name="deluser" value=""></p>
+				<p><span class="inputtext">del.icio.us username:</span><input type="text" size="35" name="deluser" value=""></p>
 				<p id="submitbutton"><input type="submit" value="Save settings"></p>
 			</form>
 		</div>
